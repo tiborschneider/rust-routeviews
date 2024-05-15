@@ -21,17 +21,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "bgpstream"
-version = "0.1.0"
-dependencies = [
- "ipnet",
- "itertools",
- "libbgpstream-sys",
- "thiserror",
- "time",
-]
-
-[[package]]
 name = "bindgen"
 version = "0.65.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -44,6 +33,29 @@ dependencies = [
  "lazycell",
  "log",
  "peeking_take_while",
+ "prettyplease",
+ "proc-macro2",
+ "quote",
+ "regex",
+ "rustc-hash",
+ "shlex",
+ "syn 2.0.39",
+ "which",
+]
+
+[[package]]
+name = "bindgen"
+version = "0.69.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a00dc851838a2120612785d195287475a3ac45514741da670b735818822129a0"
+dependencies = [
+ "bitflags 2.4.1",
+ "cexpr",
+ "clang-sys",
+ "itertools",
+ "lazy_static",
+ "lazycell",
+ "log",
  "prettyplease",
  "proc-macro2",
  "quote",
@@ -192,12 +204,11 @@ checksum = "830d08ce1d1d941e6b30645f1a0eb5643013d835ce3779a5fc208261dbe10f55"
 
 [[package]]
 name = "libbgpstream-sys"
-version = "0.2.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "96aa78940e10d5175b855a6b74c1966041d7a207754ad18c564eb0a42da49312"
+version = "0.2.2"
+source = "git+https://github.com/brendanhoran/libbgpstream-sys?rev=7361491993b3cd603463140e9d53cb7f8b778955#7361491993b3cd603463140e9d53cb7f8b778955"
 dependencies = [
  "autotools",
- "bindgen",
+ "bindgen 0.69.4",
  "rdkafka-sys",
  "wandio-sys",
 ]
@@ -389,6 +400,17 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c08c74e62047bb2de4ff487b251e4a92e24f48745648451635cec7d591162d9f"
 
 [[package]]
+name = "routeview"
+version = "0.1.0"
+dependencies = [
+ "ipnet",
+ "itertools",
+ "libbgpstream-sys",
+ "thiserror",
+ "time",
+]
+
+[[package]]
 name = "rustc-hash"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -485,7 +507,6 @@ dependencies = [
  "powerfmt",
  "serde",
  "time-core",
- "time-macros",
 ]
 
 [[package]]
@@ -493,15 +514,6 @@ name = "time-core"
 version = "0.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ef927ca75afb808a4d64dd374f00a2adf8d0fcff8e7b184af886c3c87ec4a3f3"
-
-[[package]]
-name = "time-macros"
-version = "0.2.15"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4ad70d68dba9e1f8aceda7aa6711965dfec1cac869f311a51bd08b3a2ccbce20"
-dependencies = [
- "time-core",
-]
 
 [[package]]
 name = "toml_datetime"
@@ -539,7 +551,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1e30383ffcdc411ea658e1f39eaad7ca5bf97a96e9cc55e6db39eca6605456e4"
 dependencies = [
  "autotools",
- "bindgen",
+ "bindgen 0.65.1",
  "pkg-config",
 ]
 
