@@ -10,7 +10,7 @@ use time::macros::datetime;
 
 fn main() {
     let stream = Query::new()
-        .collector(Collector::RouteView(ream::RouteView::Amsix))
+        .collector(Collector::RouteView(RouteView::Amsix))
         .record_type(RecordType::Updates)
         .interval(FilterInterval::Interval {
             start: datetime!(2023-11-08 09:55 UTC).into(),

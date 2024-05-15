@@ -156,9 +156,10 @@ pub enum RouteView {
     /// Route view with URL `pit.scl.routeviews.org` running FRR located at PIT Chile Santiago,
     /// Santiago, Chile.
     Isc,
-    /// Route view with URL `route-views.jinx.routeviews.org` running Quagga located at JINX,
-    /// Johannesburg, South Africa.
-    Jinx,
+    // Jinx is disabled, last update was 5 years ago
+    // /// Route view with URL `route-views.jinx.routeviews.org` running Quagga located at JINX,
+    // /// Johannesburg, South Africa.
+    // Jinx,
     /// Route view with URL `route-views.kixp.routeviews.org` running FRR located at KIXP, Nairobi,
     /// Kenya.
     Kixp,
@@ -191,18 +192,20 @@ pub enum RouteView {
     Rio,
     /// Route view with URL `route-views.saopaulo.routeviews.org` running Zebra located at SAOPAULO
     /// (PTT Metro, NIC.br), Sao Paulo, Brazil.
-    Saopaulo,
-    /// Route view with URL `route-views.sfmix.routeviews.org` running FRR located at San Francisco
-    /// Metro IX, San Francisco, California.
+    // SaoPaolo is disabled, last update was 2 years ago.
+    // Saopaulo,
+    // /// Route view with URL `route-views.sfmix.routeviews.org` running FRR located at San Francisco
+    // /// Metro IX, San Francisco, California.
     Sfmix,
     /// Route view with URL `route-views.sg.routeviews.org` running Zebra located at Equinix SG1,
     /// Singapore, Singapore.
     Sg,
     /// Route view with URL `route-views.siex.routeviews.org` running FRR located at Sothern Italy
     /// Exchange (SIEX), Rome, Italy.
-    Siex,
-    /// Route view with URL `route-views.sox.routeviews.org` running Quagga located at Serbia Open
-    /// Exchange, Belgrade, Serbia.
+    // Siex is disabled, last update 2 years ago
+    // Siex,
+    // /// Route view with URL `route-views.sox.routeviews.org` running Quagga located at Serbia Open
+    // /// Exchange, Belgrade, Serbia.
     Soxrs,
     /// Route view with URL `route-views.sydney.routeviews.org` running FRR located at Equinix SYD1,
     /// Sydney, Australia.
@@ -250,7 +253,6 @@ impl RouteView {
             RouteView::Gixa => CString::new("route-views.gixa").unwrap(),
             RouteView::Gorex => CString::new("route-views.gorex").unwrap(),
             RouteView::Isc => CString::new("route-views.isc").unwrap(),
-            RouteView::Jinx => CString::new("route-views.jinx").unwrap(),
             RouteView::Kixp => CString::new("route-views.kixp").unwrap(),
             RouteView::Linx => CString::new("route-views.linx").unwrap(),
             RouteView::Mwix => CString::new("route-views.mwix").unwrap(),
@@ -261,10 +263,8 @@ impl RouteView {
             RouteView::Peru => CString::new("route-views.peru").unwrap(),
             RouteView::Phoix => CString::new("route-views.phoix").unwrap(),
             RouteView::Rio => CString::new("route-views.rio").unwrap(),
-            RouteView::Saopaulo => CString::new("route-views.saopaulo").unwrap(),
             RouteView::Sfmix => CString::new("route-views.sfmix").unwrap(),
             RouteView::Sg => CString::new("route-views.sg").unwrap(),
-            RouteView::Siex => CString::new("route-views.siex").unwrap(),
             RouteView::Soxrs => CString::new("route-views.soxrs").unwrap(),
             RouteView::Sydney => CString::new("route-views.sydney").unwrap(),
             RouteView::Telxatl => CString::new("route-views.telxatl").unwrap(),
