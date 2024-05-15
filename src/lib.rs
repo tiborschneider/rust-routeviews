@@ -10,22 +10,22 @@
 //! use routeviews::stream::*;
 //! use time::macros::datetime;
 //!
-//! fn main() {
-//!     let stream = Query::new()
-//!         .collector(Collector::RouteView(RouteView::Amsix))
-//!         .record_type(RecordType::Updates)
-//!         .interval(FilterInterval::Interval {
-//!             start: datetime!(2023-11-08 09:55 UTC).into(),
-//!             stop: datetime!(2023-11-08 10:05 UTC).into(),
-//!         })
-//!         .run()
-//!         .unwrap();
+//! #fn main() -> Result<(), Box<dyn std::error::Error> {
+//! let stream = Query::new()
+//!     .collector(Collector::RouteView(RouteView::Amsix))
+//!     .record_type(RecordType::Updates)
+//!     .interval(FilterInterval::Interval {
+//!         start: datetime!(2023-11-08 09:55 UTC).into(),
+//!         stop: datetime!(2023-11-08 10:05 UTC).into(),
+//!     })
+//!     .run()?;
 //!
-//!     for element in stream {
-//!         let element = element.unwrap();
-//!         println!("{:?}", element.time.to_hms());
-//!     }
+//! for element in stream {
+//!     let element = element?;
+//!     println!("{:?}", element.time.to_hms());
 //! }
+//! # Ok(())
+//! # }
 //! ```
 
 pub mod element;
@@ -62,7 +62,7 @@ unsafe fn parse_bgpstream_ip(ip: union_bgpstream_ip_addr_t) -> Result<IpAddr, Bg
     match version {
         ADDR_VERSION_IPV4 => Ok(IpAddr::V4(ip.bs_ipv4.addr.s_addr.into())),
         ADDR_VERSION_IPV6 => Ok(IpAddr::V6(ip.bs_ipv6.addr.__in6_u.__u6_addr8.into())),
-        _ => return Err(BgpStreamError::InvalidIpAddress),
+        _ => Err(BgpStreamError::InvalidIpAddress),
     }
 }
 

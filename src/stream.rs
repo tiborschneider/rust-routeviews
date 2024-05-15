@@ -582,7 +582,7 @@ impl Query {
 
     /// Create the BGP stream and start the iteration
     pub fn run(&self) -> Result<BgpStream, BgpStreamError> {
-        BgpStream::new(&self)
+        BgpStream::new(self)
     }
 }
 
@@ -699,7 +699,7 @@ impl BgpStream {
     ///
     /// If you are using `self` as `Iterator`, then getting the next record will return the current
     /// record of the current iterator state.
-    pub fn next_record<'a>(&'a mut self) -> Result<Option<Record<'a>>, BgpStreamError> {
+    pub fn next_record(&mut self) -> Result<Option<Record<'_>>, BgpStreamError> {
         // delete the current record. That one is now lost!
         if let Some(record) = self.current_record.take() {
             Ok(Some(record))
