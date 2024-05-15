@@ -51,9 +51,7 @@ impl<'a> Record<'a> {
                 | RECORD_STATUS_CORRUPTED_SOURCE => {
                     return Err(BgpStreamError::RecordSourceEmptyOrCorrupted)
                 }
-                RECORD_STATUS_OUTSIDE_TIME_INTERVAL => {
-                    return Ok(None)
-                }
+                RECORD_STATUS_OUTSIDE_TIME_INTERVAL => return Ok(None),
                 RECORD_STATUS_CORRUPTED_RECORD => return Err(BgpStreamError::RecordCorrupted),
                 RECORD_STATUS_UNSUPPORTED_RECORD => return Err(BgpStreamError::RecordUnsupported),
                 _ => return Err(BgpStreamError::UnknownRecordStatus),
