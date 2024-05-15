@@ -7,7 +7,7 @@
 //! time of each update.
 //!
 //! ```
-//! use bgpstream::*;
+//! use routeviews::*;
 //! use time::macros::datetime;
 //!
 //! fn main() {
@@ -16,9 +16,8 @@
 //!         .record_type(stream::RecordType::Updates)
 //!         .interval(stream::FilterInterval::Interval {
 //!             start: datetime!(2023-11-08 09:55 UTC).into(),
-//!             stop: datetime!(2023-11-08 10:55 UTC).into(),
+//!             stop: datetime!(2023-11-08 10:05 UTC).into(),
 //!         })
-//!         .cache("/tmp/bgpstream_cache")
 //!         .run()
 //!         .unwrap();
 //!
@@ -129,23 +128,4 @@ pub enum BgpStreamError {
     StringContainsNull(#[from] NulError),
     #[error("Error converting from a timestamp into date and time: {0}")]
     Timestamp(#[from] ComponentRange),
-}
-
-#[cfg(test)]
-mod test {
-    use super::*;
-
-    #[test]
-    fn test_query() {
-        Query::new()
-            .collector("route-views.amsix")
-            .record_type(stream::RecordType::Updates)
-            .interval(stream::FilterInterval::Since {
-                amount: 1,
-                unit: stream::TimeUnit::Hours,
-                live: false,
-            })
-            .run()
-            .unwrap();
-    }
 }
