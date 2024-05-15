@@ -5,14 +5,14 @@ This Library performs a `Query` and yields the results as an iterator. Look at `
 The following example reads all updates from the AMSIX RouteView within one hour and prints the time of each update.
 
 ```rust
-use routeviews::*;
+use routeviews::stream::*;
 use time::macros::datetime;
 
 fn main() {
     let stream = Query::new()
-        .collector(stream::Collector::RouteView(stream::RouteView::Amsix))
-        .record_type(stream::RecordType::Updates)
-        .interval(stream::FilterInterval::Interval {
+        .collector(Collector::RouteView(ream::RouteView::Amsix))
+        .record_type(RecordType::Updates)
+        .interval(FilterInterval::Interval {
             start: datetime!(2023-11-08 09:55 UTC).into(),
             stop: datetime!(2023-11-08 10:55 UTC).into(),
         })

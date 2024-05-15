@@ -7,14 +7,14 @@
 //! time of each update.
 //!
 //! ```
-//! use routeviews::*;
+//! use routeviews::stream::*;
 //! use time::macros::datetime;
 //!
 //! fn main() {
 //!     let stream = Query::new()
-//!         .collector(stream::Collector::RouteView(stream::RouteView::Amsix))
-//!         .record_type(stream::RecordType::Updates)
-//!         .interval(stream::FilterInterval::Interval {
+//!         .collector(Collector::RouteView(RouteView::Amsix))
+//!         .record_type(RecordType::Updates)
+//!         .interval(FilterInterval::Interval {
 //!             start: datetime!(2023-11-08 09:55 UTC).into(),
 //!             stop: datetime!(2023-11-08 10:05 UTC).into(),
 //!         })
