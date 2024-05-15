@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - run: apt install -y curl
+    - run: sudo apt install -y curl
     - uses: actions/checkout@v4
     - name: Build
       run: cargo build --verbose
