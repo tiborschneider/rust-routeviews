@@ -15,7 +15,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - run: sudo apt install -y libcurl4-openssl-dev
+    - run: sudo apt update
+    - run: sudo apt install -y libcurl4-openssl-dev curl apt-transport-https ssl-cert ca-certificates gnupg lsb-release 
     - uses: actions/checkout@v4
     - name: Build
       run: cargo build --verbose
