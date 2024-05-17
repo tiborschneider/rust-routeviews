@@ -31,11 +31,14 @@ use libbgpstream_sys::{
     bgpstream_elem_type_t_BGPSTREAM_ELEM_TYPE_WITHDRAWAL as ELEM_TYPE_WITHDRAWAL,
     bgpstream_record_get_next_elem,
 };
+#[cfg(feature = "serde")]
+use serde::{Deserialize, Serialize};
 use time::OffsetDateTime;
 
 use crate::{parse_bgpstream_ip, parse_bgpstream_prefix, record::Record, BgpStreamError};
 
 #[derive(Debug, Clone)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct Element {
     pub time: OffsetDateTime,
     pub peer_ip: IpAddr,
@@ -134,6 +137,7 @@ impl Element {
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub enum AsSegment {
     Num(u32),
     Set(Vec<u32>),
@@ -149,6 +153,7 @@ impl Display for AsSegment {
 }
 
 #[derive(Debug, Clone)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub enum ElementType {
     RIB(Update),
     Announcement(Update),
@@ -157,6 +162,7 @@ pub enum ElementType {
 }
 
 #[derive(Debug, Clone)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct Update {
     pub prefix: IpNet,
     pub next_hop: IpAddr,
@@ -168,6 +174,7 @@ pub struct Update {
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub enum PeerState {
     Idle,
     Connect,
@@ -200,6 +207,7 @@ impl TryFrom<u32> for PeerState {
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub enum OriginType {
     Igp,
     Egp,
