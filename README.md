@@ -26,3 +26,13 @@ fn main() {
     }
 }
 ```
+
+## Linking to system libraries
+
+There are still unresolved issues with [`libbgpstream-sys`](https://github.com/brendanhoran/libbgpstream-sys?tab=readme-ov-file) and [`wandio-sys`](https://github.com/brendanhoran/wandio-sys?tab=readme-ov-file#system-dependencies). 
+It depends on several system libraries to be installed.
+Make sure to have the following libraries available in your library path:
+
+```
+LIBWANDIO_LIBS=' -lpthread -lbz2 -lz -llzo2 -llzma -lzstd -llz4 -lcurl'
+```
