@@ -2,6 +2,13 @@
 name = "routeviews"
 version = "0.1.0"
 edition = "2021"
+authors = ["Tibor Schneider <tiborschneider@bluewin.ch>"]
+license = "MIT OR Apache-2.0"
+description = "Read BGPStream data as an iterator"
+readme = "README.md"
+repository = "https://github.com/tiborschneider/rust-routeviews"
+keywords = ["BGP", "BGPstream"]
+categories = ["network-programming"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
