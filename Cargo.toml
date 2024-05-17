@@ -14,7 +14,7 @@ categories = ["network-programming"]
 
 [dependencies]
 ipnet = "2.9.0"
-libbgpstream-sys = { git = "https://github.com/brendanhoran/libbgpstream-sys", rev = "7361491993b3cd603463140e9d53cb7f8b778955" }
+libbgpstream-sys = { git = "https://github.com/brendanhoran/libbgpstream-sys", rev = "7361491993b3cd603463140e9d53cb7f8b778955", version = "0.2.2" }
 thiserror = "1.0.50"
 time = {version = "0.3.30", features = ["macros"]}
 itertools = "0.11.0"
